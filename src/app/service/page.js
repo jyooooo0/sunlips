@@ -34,9 +34,9 @@ export default function ServicePage() {
                     <div className="grid md:grid-cols-2 gap-8 mb-8">
                         {/* Plan A */}
                         <div className="bg-[#fcfbf9] p-6 rounded-sm border border-gray-200">
-                            <h4 className="text-lg font-bold text-gray-900 mb-4 border-l-4 border-[#ee5d3a] pl-4 py-1">
+                            <h4 className="text-lg font-bold text-black mb-4 border-l-4 border-[#ee5d3a] pl-4 py-1">
                                 A：ベーシックプラン
-                                <span className="block text-sm font-normal text-gray-700 mt-1">（美容院・飲⾷店など）</span>
+                                <span className="block text-sm font-normal text-gray-800 mt-1">（美容院・飲⾷店など）</span>
                             </h4>
                             <ul className="space-y-3 text-gray-800 pl-2 font-medium">
                                 <li className="flex items-start gap-2">
@@ -64,9 +64,9 @@ export default function ServicePage() {
 
                         {/* Plan B */}
                         <div className="bg-[#fcfbf9] p-6 rounded-sm border border-gray-200">
-                            <h4 className="text-lg font-bold text-gray-900 mb-4 border-l-4 border-[#ee5d3a] pl-4 py-1">
+                            <h4 className="text-lg font-bold text-black mb-4 border-l-4 border-[#ee5d3a] pl-4 py-1">
                                 B：スタンダードプラン
-                                <span className="block text-sm font-normal text-gray-700 mt-1">（事務所・サロンなど）</span>
+                                <span className="block text-sm font-normal text-gray-800 mt-1">（事務所・サロンなど）</span>
                             </h4>
                             <ul className="space-y-3 text-gray-800 pl-2 font-medium">
                                 <li className="flex items-start gap-2">
@@ -95,7 +95,7 @@ export default function ServicePage() {
                     {/* Plan C */}
                     <div className="bg-gray-100 p-6 rounded-sm mb-10 text-center md:text-left border border-gray-200">
                         <div className="flex flex-col md:flex-row items-center gap-4">
-                            <h4 className="text-lg font-bold text-gray-900 md:w-1/3 border-l-4 border-gray-500 pl-4">
+                            <h4 className="text-lg font-bold text-black md:w-1/3 border-l-4 border-gray-500 pl-4">
                                 C：プレミアムプラン
                             </h4>
                             <p className="text-gray-800 md:w-2/3 font-medium">
