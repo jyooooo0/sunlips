@@ -5,10 +5,12 @@ import { useState, useEffect } from 'react';
 
 const navLinks = [
     { id: 'philosophy', label: '想い', labelEn: 'Philosophy' },
+    { id: 'news', label: 'お知らせ', labelEn: 'News' }, // Moved News here
     { id: 'gallery', label: '作品', labelEn: 'Works' },
-    { id: 'news', label: 'お知らせ', labelEn: 'News' },
+    { id: 'service', label: 'サービス', labelEn: 'Service' },
+    { id: 'washi', label: '和紙製品', labelEn: 'Washi' },
     { id: 'shop', label: '店舗情報', labelEn: 'Shop' },
-    { id: 'onlineshop', label: 'オンラインショップ', labelEn: 'Online Shop', href: 'https://sunlips.stores.jp/', isExternal: true },
+    { id: 'onlineshop', label: 'Online Shop', labelEn: 'Store', href: 'https://sunlips.stores.jp/', isExternal: true },
 ];
 
 export default function Navigation() {
@@ -29,6 +31,19 @@ export default function Navigation() {
             setIsMenuOpen(false);
             return;
         }
+
+        // ServiceとWashiは別ページへ遷移
+        if (link.id === 'service' || link.id === 'washi') {
+            window.location.href = `/${link.id}`;
+            return;
+        }
+
+        // ホームページ内のアンカーリンク
+        if (window.location.pathname !== '/') {
+            window.location.href = `/#${link.id}`;
+            return;
+        }
+
         const element = document.getElementById(link.id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -65,10 +80,15 @@ export default function Navigation() {
                             <button
                                 key={link.id}
                                 onClick={() => scrollToSection(link)}
-                                className="group relative font-english text-sm tracking-[0.1em] text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors duration-500"
+                                className={`group relative font-english text-sm tracking-[0.1em] transition-all duration-500 ${link.id === 'onlineshop'
+                                    ? 'bg-[#ee5d3a] text-white px-6 py-2 rounded-full hover:bg-[#d14022] hover:shadow-lg'
+                                    : 'text-[var(--text-muted)] hover:text-[var(--text-heading)]'
+                                    }`}
                             >
-                                <span>{link.labelEn}</span>
-                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#ee5d3a] transition-all duration-500 group-hover:w-full" />
+                                <span>{link.id === 'onlineshop' ? link.label : link.labelEn}</span>
+                                {link.id !== 'onlineshop' && (
+                                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#ee5d3a] transition-all duration-500 group-hover:w-full" />
+                                )}
                             </button>
                         ))}
                     </nav>
@@ -138,16 +158,21 @@ export default function Navigation() {
                                 <motion.button
                                     key={link.id}
                                     onClick={() => scrollToSection(link)}
-                                    className="text-center group"
+                                    className={`text-center group ${link.id === 'onlineshop' ? 'bg-white px-8 py-3 rounded-full' : ''}`}
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 20 }}
                                     transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: "easeOut" }}
                                 >
-                                    <span className="block font-english text-xs tracking-[0.3em] text-white/70 mb-2 group-hover:text-white transition-colors">
-                                        {link.labelEn}
-                                    </span>
-                                    <span className="block text-3xl md:text-4xl text-white font-medium group-hover:scale-105 transition-transform duration-300">
+                                    {link.id !== 'onlineshop' && (
+                                        <span className="block font-english text-xs tracking-[0.3em] text-white/70 mb-2 group-hover:text-white transition-colors">
+                                            {link.labelEn}
+                                        </span>
+                                    )}
+                                    <span className={`block text-xl md:text-2xl font-medium transition-transform duration-300 ${link.id === 'onlineshop'
+                                        ? 'text-[#ee5d3a] font-bold tracking-widest'
+                                        : 'text-white group-hover:scale-105'
+                                        }`}>
                                         {link.label}
                                     </span>
                                 </motion.button>

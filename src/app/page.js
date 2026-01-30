@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import Link from 'next/link'; // Import Link if needed, though not explicitly used here
+import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
-import ConceptWashi from '@/components/ConceptWashi'; // 追加
+import ConceptWashi from '@/components/ConceptWashi';
+import Service from '@/components/Service'; // 追加
 import Gallery from '@/components/Gallery';
 import News from '@/components/News';
 import Links from '@/components/Links';
@@ -35,9 +36,14 @@ export default function Home() {
         <Philosophy />
       </section>
 
-      {/* Concept Washi Section - NEW */}
+      {/* Concept Washi Section */}
       <section id="washi">
         <ConceptWashi />
+      </section>
+
+      {/* Service Section - NEW */}
+      <section id="service">
+        <Service />
       </section>
 
       {/* Gallery Section */}

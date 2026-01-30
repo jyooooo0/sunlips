@@ -65,25 +65,26 @@ export default function Opening({ onComplete }) {
             <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }} // 回転速度をアップ (60s -> 20s)
             >
-                {[...Array(8)].map((_, i) => ( // 花びらを8枚に増やして密度アップ
+                {[...Array(8)].map((_, i) => (
                     <motion.div
                         key={i}
                         className="absolute w-32 h-64 bg-gradient-to-t from-[#ee5d3a] to-transparent rounded-[100%] mix-blend-screen opacity-0"
                         style={{
-                            originY: 1, // 下端（中心）を基準に回転・拡大
-                            rotate: i * 45, // 360 / 8
-                            translateY: '-50%', // 中心合わせ調整
+                            originY: 1,
+                            rotate: i * 45,
+                            translateY: '-50%',
                         }}
                         animate={{
                             scaleY: [0, 1.2],
                             scaleX: [0, 1],
                             opacity: [0, 0.4, 0],
+                            rotate: [i * 45, i * 45 + 90], // 開くときに大きく回転を加える (+90度)
                         }}
                         transition={{
                             delay: 0.5,
-                            duration: 2,
+                            duration: 2.5, // 少しゆっくりにして動きを見せる
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     />
