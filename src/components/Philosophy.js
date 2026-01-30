@@ -44,33 +44,19 @@ export default function Philosophy() {
             <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#ee5d3a]/5 to-transparent pointer-events-none" />
 
             {/* Dynamic Background Accent - Circulating Animation */}
-            <motion.div
+            {/* Dynamic Background Accent - Circulating Animation (Static) */}
+            <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vh] h-[100vh] rounded-full pointer-events-none mix-blend-screen opacity-[0.05]"
                 style={{
                     background: 'conic-gradient(from 0deg, #ee5d3a, transparent, #ee5d3a)',
                     filter: 'blur(100px)',
                 }}
-                animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                }}
-                transition={{
-                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                    scale: { duration: 10, repeat: Infinity, ease: "easeInOut" }
-                }}
             />
-            <motion.div
+            <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vh] h-[80vh] rounded-full pointer-events-none mix-blend-screen opacity-[0.05]"
                 style={{
                     background: 'radial-gradient(circle, #ee5d3a 0%, transparent 70%)',
                     filter: 'blur(80px)',
-                }}
-                animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.03, 0.06, 0.03],
-                }}
-                transition={{
-                    duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1
                 }}
             />
 

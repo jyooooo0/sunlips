@@ -188,9 +188,11 @@ p {
   height: 100vh;
   pointer-events: none;
   opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  /* SVGフィルタ(feTurbulence)は重いため、軽量なドットパターンに変更 */
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23000'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+  /* 小さなパターンを繰り返す */
   z-index: 50;
-  /* z-indexを少し下げる（Openingが100なので問題ないが、他の要素との兼ね合い調整） */
   backface-visibility: hidden;
   transform: translateZ(0);
   /* GPUアクセラレーション */
