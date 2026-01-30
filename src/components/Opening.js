@@ -92,20 +92,20 @@ export default function Opening({ onComplete }) {
             </motion.div>
 
             {/* Expanding Particles: 外側に広がる光の粒 */}
-            {[...Array(12)].map((_, i) => (
+            {[...Array(24)].map((_, i) => (
                 <motion.div
                     key={`particle-${i}`}
                     className="absolute w-1 h-1 bg-[#ee5d3a] rounded-full opacity-0"
                     initial={{ x: 0, y: 0 }}
                     animate={{
-                        x: Math.cos(i * 30 * (Math.PI / 180)) * 200, // 360度/12個 = 30度ずつ配置
-                        y: Math.sin(i * 30 * (Math.PI / 180)) * 200,
-                        opacity: [0, 1, 0],
-                        scale: [0, 1.5, 0]
+                        x: Math.cos(i * 15 * (Math.PI / 180)) * 250, // 360度/24個 = 15度ずつ配置, 距離を250にアップ
+                        y: Math.sin(i * 15 * (Math.PI / 180)) * 250,
+                        opacity: [0, 0.8, 0],
+                        scale: [0, 2, 0]
                     }}
                     transition={{
-                        delay: 1.0, // 花が開いた後に広がる
-                        duration: 2.0,
+                        delay: 0.8, // 少し早める
+                        duration: 2.5,
                         ease: "easeOut"
                     }}
                 />
