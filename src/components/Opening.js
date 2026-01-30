@@ -61,29 +61,34 @@ export default function Opening({ onComplete }) {
                 transition={{ delay: 0.1, duration: 2.5, ease: "easeOut" }}
             />
 
-            {/* Blooming Petals: 花の開花 */}
-            {/* 6枚の花びらが回転しながら広がる */}
-            {[...Array(6)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute w-32 h-64 bg-gradient-to-t from-[#ee5d3a] to-transparent rounded-[100%] mix-blend-screen opacity-0"
-                    style={{
-                        originY: 1, // 下端（中心）を基準に回転・拡大
-                        rotate: i * 60,
-                        translateY: '-50%', // 中心合わせ調整
-                    }}
-                    animate={{
-                        scaleY: [0, 1.2],
-                        scaleX: [0, 1],
-                        opacity: [0, 0.4, 0],
-                    }}
-                    transition={{
-                        delay: 0.5,
-                        duration: 2,
-                        ease: [0.16, 1, 0.3, 1]
-                    }}
-                />
-            ))}
+            {/* Blooming Petals: 花の開花 - 回転しながら広がる */}
+            <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            >
+                {[...Array(8)].map((_, i) => ( // 花びらを8枚に増やして密度アップ
+                    <motion.div
+                        key={i}
+                        className="absolute w-32 h-64 bg-gradient-to-t from-[#ee5d3a] to-transparent rounded-[100%] mix-blend-screen opacity-0"
+                        style={{
+                            originY: 1, // 下端（中心）を基準に回転・拡大
+                            rotate: i * 45, // 360 / 8
+                            translateY: '-50%', // 中心合わせ調整
+                        }}
+                        animate={{
+                            scaleY: [0, 1.2],
+                            scaleX: [0, 1],
+                            opacity: [0, 0.4, 0],
+                        }}
+                        transition={{
+                            delay: 0.5,
+                            duration: 2,
+                            ease: [0.16, 1, 0.3, 1]
+                        }}
+                    />
+                ))}
+            </motion.div>
 
             {/* Wipe Effect Text */}
             <motion.div
