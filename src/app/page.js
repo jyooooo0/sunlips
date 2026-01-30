@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
 import ConceptWashi from '@/components/ConceptWashi';
-import Service from '@/components/Service'; // 追加
+import Service from '@/components/Service';
 import Gallery from '@/components/Gallery';
 import News from '@/components/News';
 import Links from '@/components/Links';
@@ -36,14 +36,9 @@ export default function Home() {
         <Philosophy />
       </section>
 
-      {/* Concept Washi Section */}
-      <section id="washi">
-        <ConceptWashi />
-      </section>
-
-      {/* Service Section - NEW */}
-      <section id="service">
-        <Service />
+      {/* News Section - お知らせ (Moved here) */}
+      <section id="news">
+        <News />
       </section>
 
       {/* Gallery Section */}
@@ -51,9 +46,14 @@ export default function Home() {
         <Gallery />
       </section>
 
-      {/* News Section - お知らせ */}
-      <section id="news">
-        <News />
+      {/* Service Section - NEW */}
+      <section id="service">
+        <Service />
+      </section>
+
+      {/* Concept Washi Section */}
+      <section id="washi">
+        <ConceptWashi />
       </section>
 
       {/* Links Section - オンラインショップ・ふるさと納税 */}
