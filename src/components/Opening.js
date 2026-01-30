@@ -65,7 +65,7 @@ export default function Opening({ onComplete }) {
             <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }} // 回転速度をアップ (60s -> 20s)
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
                 {[...Array(8)].map((_, i) => (
                     <motion.div
@@ -80,16 +80,36 @@ export default function Opening({ onComplete }) {
                             scaleY: [0, 1.2],
                             scaleX: [0, 1],
                             opacity: [0, 0.4, 0],
-                            rotate: [i * 45, i * 45 + 90], // 開くときに大きく回転を加える (+90度)
+                            rotate: [i * 45, i * 45 + 90],
                         }}
                         transition={{
                             delay: 0.5,
-                            duration: 2.5, // 少しゆっくりにして動きを見せる
+                            duration: 2.5,
                             ease: [0.16, 1, 0.3, 1]
                         }}
                     />
                 ))}
             </motion.div>
+
+            {/* Expanding Particles: 外側に広がる光の粒 */}
+            {[...Array(12)].map((_, i) => (
+                <motion.div
+                    key={`particle-${i}`}
+                    className="absolute w-1 h-1 bg-[#ee5d3a] rounded-full opacity-0"
+                    initial={{ x: 0, y: 0 }}
+                    animate={{
+                        x: Math.cos(i * 30 * (Math.PI / 180)) * 200, // 360度/12個 = 30度ずつ配置
+                        y: Math.sin(i * 30 * (Math.PI / 180)) * 200,
+                        opacity: [0, 1, 0],
+                        scale: [0, 1.5, 0]
+                    }}
+                    transition={{
+                        delay: 1.0, // 花が開いた後に広がる
+                        duration: 2.0,
+                        ease: "easeOut"
+                    }}
+                />
+            ))}
 
             {/* Wipe Effect Text */}
             <motion.div
