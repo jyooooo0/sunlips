@@ -4,14 +4,6 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     return (
         <section className="relative h-screen w-full overflow-hidden">
             {/* Background Image with Dark Overlay */}
@@ -19,23 +11,16 @@ export default function Hero() {
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
                     backgroundImage: `url('/images/hero-bg.jpg')`,
-                    transform: `scale(${1 + scrollY * 0.0002})`,
-                    transition: 'transform 0.1s ease-out',
                 }}
             >
-                {/* Multiple Gradient Overlays for Depth */}
+                {/* Multiple Gradient Overlays for Depth - Static */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1a1917]/80 via-[#1a1917]/50 to-[#1a1917]/90" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#ee5d3a]/20 to-transparent mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1917] via-transparent to-transparent" />
             </div>
 
-            {/* Fog Effect - Clears on Scroll */}
-            <motion.div
-                className="absolute inset-0 bg-[#1a1917]"
-                initial={{ opacity: 0.7 }}
-                animate={{ opacity: Math.max(0, 0.7 - scrollY * 0.003) }}
-                transition={{ duration: 0.1 }}
-            />
+            {/* Static Overlay instead of Scroll-based Fog */}
+            <div className="absolute inset-0 bg-[#1a1917]/30 pointer-events-none" />
 
             {/* Main Content */}
             <div className="relative z-10 flex h-full flex-col justify-end pb-[15vh] px-8 md:px-16 lg:px-24">
